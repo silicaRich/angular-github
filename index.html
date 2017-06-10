@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="style.css"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body ng-controller="mainController">
+    <user></user>
+
+    <div ng-repeat="follower in followers track by follower.id">
+        <follower></follower>
+    </div>
+</body>
+</html>
