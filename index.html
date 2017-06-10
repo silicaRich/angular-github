@@ -3,19 +3,28 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
-    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
     <link rel="stylesheet" href="style.css"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"/>
+
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
 
 <body ng-controller="mainController">
     <user></user>
-
+    <!--<h2>Followers</h2>-->
     <div ng-repeat="follower in followers track by follower.id">
         <follower></follower>
     </div>
+
+    <div class="row">
+        <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+    </div>
+
 </body>
 </html>
