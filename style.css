@@ -1,3 +1,8 @@
 ﻿.thumbnail{
     text-align:center;
 }
+
+.navbar{
+    min-height:auto;
+    padding:5px;
+}

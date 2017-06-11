@@ -2,20 +2,24 @@
 
 
 app.controller("mainController", function ($http, $scope) {
-
-    $http.get("https://api.github.com/users/octocat")
-        .then(function (response) {
-            $scope.user = response.data;
-        });
-
     $scope.totalItems = 64;
     $scope.currentPage = 1;
     $scope.limit = 1;
     $scope.maxSize = 5;
-    getData();
+
+    $scope.currentUserName = "octocat";
+    getUser($scope.currentUserName);
+    getData($scope.currentUserName);
+
+    function getUser() {
+        $http.get("https://api.github.com/users/" + $scope.currentUserName)
+            .then(function (response) {
+                $scope.user = response.data;
+            });
+    }
 
     function getData() {
-        $http.get("https://api.github.com/users/octocat/followers?page=" + ($scope.currentPage - 1) * $scope.limit + "&per_page=50")
+        $http.get("https://api.github.com/users/" + $scope.currentUserName + "/followers?page=" + ($scope.currentPage) * $scope.limit + "&per_page=50")
           .then(function (response) {
               $scope.followers = response.data;
           });
@@ -31,12 +35,22 @@ app.controller("mainController", function ($http, $scope) {
 
 });
 
+app.controller("navbar", function ($scope) {
+    
+    $scope.search = function () {
+        $scope.$parent.currentUserName = $scope.searchTerm;
 
-app.directive("follower", function () {
+        $scope.$parent.getUser();
+        $scope.$parent.getData();
+    }
+
+});
+
+app.directive("followers", function () {
 
     return {
         restrict: 'E',
-        templateUrl: "follower.html"
+        templateUrl: "followers.html"
     };
 
 });
@@ -46,6 +60,25 @@ app.directive("user", function () {
     return {
         restrict: 'E',
         templateUrl: "user.html"
+    };
+
+});
+
+app.directive("navbar", function () {
+
+    return {
+        restrict: 'E',
+        templateUrl: "navbar.html",
+        controller: 'navbar'
+    };
+
+});
+
+app.directive("pagination", function () {
+
+    return {
+        restrict: 'E',
+        templateUrl: "pagination.html"
     };
 
 });
