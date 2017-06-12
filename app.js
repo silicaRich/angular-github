@@ -11,6 +11,11 @@ app.controller("mainController", function ($http, $scope) {
     getUser($scope.currentUserName);
     getData($scope.currentUserName);
 
+    $scope.$watch("currentUserName", function () {
+        getUser();
+        getData();
+    });
+
     function getUser() {
         $http.get("https://api.github.com/users/" + $scope.currentUserName)
             .then(function (response) {
@@ -31,6 +36,10 @@ app.controller("mainController", function ($http, $scope) {
 
     $scope.pageChanged = function () {
         getData();
+    };
+
+    $scope.setCurrentUser = function (userName) {
+        $scope.currentUserName = userName;
     };
 
 });

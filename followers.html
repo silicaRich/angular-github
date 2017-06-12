@@ -1,7 +1,7 @@
 ﻿<div ng-repeat="follower in followers track by follower.id">
     <div class="col-md-2">
         <div class="thumbnail">
-            <a href="{{follower.html_url}}" target="_blank">
+            <a ng-click="setCurrentUser(follower.login)">
                 <img src="{{follower.avatar_url}}" class="img-circle" />
             </a>
             <div class="caption">
