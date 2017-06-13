@@ -91,3 +91,15 @@ app.directive("pagination", function () {
     };
 
 });
+
+app.filter('followerfilter', function () {
+
+    return function (follower) {
+
+        if (follower.id < 1555350) {
+        }
+        return follower;
+
+    }
+
+});
