@@ -1,5 +1,10 @@
-﻿var app = angular.module("app", ['ui.bootstrap']);
+﻿// angular and angular-ui-bootstrap are taken from package.json
+import angular from 'angular'
+import angular_ui_bootstrap from 'angular-ui-bootstrap'
+// this is done via css/style loader module in webpack
+import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 
+var app = angular.module("app", ['ui.bootstrap']);
 
 app.controller("mainController", function ($http, $scope) {
     $scope.totalItems = 64;
@@ -92,14 +97,14 @@ app.directive("pagination", function () {
 
 });
 
-app.filter('followerfilter', function () {
+//app.filter('followerfilter', function () {
 
-    return function (follower) {
+//    return function (follower) {
 
-        if (follower.id < 1555350) {
-        }
-        return follower;
+//        if (follower.id < 1555350) {
+//        }
+//        return follower;
 
-    }
+//    }
 
-});
+//});
